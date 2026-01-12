@@ -1,0 +1,15 @@
+#Test file to fetch teams to check if API is working
+
+import requests
+from app.config import BASE_URL, HEADERS
+
+LEAGUE_ID = 301
+SEASON = 2025
+
+url = f"{BASE_URL}teams?league={LEAGUE_ID}&season={SEASON}"
+response = requests.get(url, header=HEADERS)
+data = response.json()
+
+for team in data["response"]:
+    print(team["team"]["name"])
+
